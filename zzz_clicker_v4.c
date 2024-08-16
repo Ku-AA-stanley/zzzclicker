@@ -40,6 +40,7 @@ unsigned __stdcall HandleMouse(void *param)
       Sleep(22);
       counter++;
       printf("Counter: %d\n", counter); // 修正了 printf 的使用
+      SetConsoleTitle("running...");
     }
     Sleep(1);
   }
@@ -60,6 +61,7 @@ int main()
   {
     Sleep(1000);
     printf(".\n");
+    SetConsoleTitle("waiting...");
   }
 
   WaitForSingleObject(hThread1, INFINITE); // 等待线程结束
