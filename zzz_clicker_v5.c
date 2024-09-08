@@ -76,6 +76,8 @@ unsigned __stdcall HandleMouseAndFKey(void *param)
 
 int main()
 {
+  printf(" zzz_clicker v5 \n");
+  printf(" last updated: 9/8/2024\n\n");
   printf("# Mouse Side Button Functions\n");
   printf("   - Back : pressing LEFT key\n");
   printf("   - Forward : pressing F key\n");
@@ -90,7 +92,7 @@ int main()
   {
     Sleep(1000);
     printf(".\n");
-    SetConsoleTitle("Waiting...");
+    SetConsoleTitle("Idle...");
   }
 
   WaitForSingleObject(hThread1, INFINITE); // Wait for thread to finish
