@@ -11,7 +11,7 @@ unsigned __stdcall CheckToggle(void *param)
 {
   while (1)
   {
-    // Check for VK_XBUTTON1
+    // Check for VK_XBUTTON1，下一頁的側鍵
     if (GetKeyState(VK_XBUTTON1) & 0x8000)
     {
       WaitForSingleObject(toggleMutex, INFINITE); // Acquire mutex
@@ -20,7 +20,7 @@ unsigned __stdcall CheckToggle(void *param)
       Sleep(90);
     }
 
-    // Check for VK_XBUTTON2
+    // Check for VK_XBUTTON2，上一頁的側鍵
     if (GetKeyState(VK_XBUTTON2) & 0x8000)
     {
       WaitForSingleObject(toggleMutex, INFINITE); // Acquire mutex
@@ -50,11 +50,11 @@ unsigned __stdcall HandleMouseAndFKey(void *param)
     if (localToggleLeft)
     {
       mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0);
-      Sleep(22);
+      Sleep(25);
       mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
-      Sleep(22);
+      Sleep(25);
       clickCounter++;
-      printf("Left Click Counter: %d\n", clickCounter);
+      printf("Left Key Counter: %d\n", clickCounter);
       SetConsoleTitle("Clicking LEFT");
     }
 
@@ -62,10 +62,10 @@ unsigned __stdcall HandleMouseAndFKey(void *param)
     {
       // Simulate F key press
       keybd_event('F', 0, 0, 0);               // Key down
-      Sleep(22);                               // Hold for 50 ms
+      Sleep(25);                               // Hold for 50 ms
       keybd_event('F', 0, KEYEVENTF_KEYUP, 0); // Key up
       fKeyCounter++;
-      printf("F Key Pressed: %d times\n", fKeyCounter);
+      printf("F Key Pressed: %d\n", fKeyCounter);
       SetConsoleTitle("Pressing F");
     }
 
@@ -76,7 +76,9 @@ unsigned __stdcall HandleMouseAndFKey(void *param)
 
 int main()
 {
-  printf("Ready for action...\n");
+  printf("# Mouse Side Button Functions\n");
+  printf("   - Back : pressing LEFT key\n");
+  printf("   - Forward : pressing F key\n");
 
   toggleMutex = CreateMutex(NULL, FALSE, NULL); // Create mutex
 
