@@ -40,7 +40,7 @@ unsigned __stdcall HandleMouse(void *param)
       Sleep(22);
       counter++;
       printf("Counter: %d\n", counter); // 修正了 printf 的使用
-      SetConsoleTitle("running...");
+      SetConsoleTitle("clicking LEFT");
     }
     Sleep(1);
   }
